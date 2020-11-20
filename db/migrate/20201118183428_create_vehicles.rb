@@ -2,7 +2,7 @@ class CreateVehicles < ActiveRecord::Migration[6.0]
   def change
     create_table :vehicles do |t|
       t.belongs_to :company
-      t.string :car_type
+      t.string :vehicle_type
       t.string :year
       t.string :make
       t.string :model

@@ -14,6 +14,7 @@ class CreateBookings < ActiveRecord::Migration[6.0]
       t.string :trip_status
       t.decimal :price
       t.string :payment_type
+      t.string :vehicle_type
       t.string :special_notes
       t.string :internal_notes
       t.string :passenger_name

@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_11_18_191307) do
     t.string "trip_status"
     t.decimal "price"
     t.string "payment_type"
+    t.string "vehicle_type"
     t.string "special_notes"
     t.string "internal_notes"
     t.string "passenger_name"
@@ -84,7 +85,7 @@ ActiveRecord::Schema.define(version: 2020_11_18_191307) do
 
   create_table "vehicles", force: :cascade do |t|
     t.bigint "company_id"
-    t.string "car_type"
+    t.string "vehicle_type"
     t.string "year"
     t.string "make"
     t.string "model"
