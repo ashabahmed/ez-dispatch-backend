@@ -5,6 +5,9 @@ class BookingSerializer < ActiveModel::Serializer
   :internal_notes, :passenger_name, :passenger_number, :pick_up_address, 
   :drop_off_address, :created_at, :updated_at 
 
+  belongs_to :dispatcher
+  belongs_to :account
+
   def dispatcher
     self.object.dispatcher
   end

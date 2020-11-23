@@ -28,6 +28,7 @@ active: true, created_by_dispatcher_id: Dispatcher.all.sample.id)}
 make: Faker::Vehicle.make, model: Faker::Vehicle.model, year: Faker::Vehicle.year, mileage: Faker::Vehicle.mileage(min: 50_000, max: 250_000), 
 created_by_dispatcher_id: Dispatcher.all.sample.id)}
 puts "vehicles created"
+
 50.times {Account.create(dispatcher: Dispatcher.all.sample, name: Faker::Name.unique.name, email: Faker::Internet.email , residence: Faker::Address.street_address, 
 passengers:"", number: Faker::PhoneNumber.cell_phone, credit_cards: Faker::Business.credit_card_number )}
 puts "accounts created"

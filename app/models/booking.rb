@@ -3,4 +3,9 @@ class Booking < ApplicationRecord
   belongs_to :vehicle, optional: true
   belongs_to :dispatcher
   belongs_to :account
+
+  def self.ordered
+    Booking.all.order(date: :desc)
+  end
+
 end
