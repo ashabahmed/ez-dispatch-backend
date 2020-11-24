@@ -35,6 +35,7 @@ class BookingsController < ApplicationController
   end
 
   def update
+    byebug
     booking = Booking.find(params[:id])
 
     booking.update!(booking_params)
