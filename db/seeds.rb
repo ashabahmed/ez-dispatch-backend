@@ -35,10 +35,10 @@ puts "accounts created"
 
 80.times {
   date = Faker::Date.between(from: Time.now.strftime("%Y-%m-%d"), to: '2020-11-26')
-  
+  pick_up_time = (Faker::Time.between_dates(from: date, to: date, period: :morning))
   Booking.create(account: Account.all.sample, vehicle_type: car_types.sample ,vehicle: nil, driver: nil, 
   drop_off_address: Faker::Address.street_address, pick_up_address: Faker::Address.street_address, 
-  dispatcher: Dispatcher.all.sample, date: date, pick_up_time: nil, drop_off_time: nil, trip_type: "", trip_status: "Booked", price: 0, payment_type: "", 
+  dispatcher: Dispatcher.all.sample, date: date, pick_up_time: pick_up_time, drop_off_time: nil, trip_type: "", trip_status: "Booked", price: 0, payment_type: "", 
   special_notes:"", internal_notes:"", passenger_name: "", passenger_number: "")
 }
 puts "future dates created"
