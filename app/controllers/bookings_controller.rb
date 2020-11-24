@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-    
     dispatcher = Dispatcher.find(params[:dispatcher])
     account = Account.find(params[:account])
     date = params[:date]
@@ -35,7 +34,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    byebug
+    
     booking = Booking.find(params[:id])
 
     booking.update!(booking_params)
