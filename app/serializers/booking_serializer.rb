@@ -6,7 +6,6 @@ class BookingSerializer < ActiveModel::Serializer
   :drop_off_address, :created_at, :updated_at, :booking_date, :booking_time
 
 
-
   def dispatcher
     self.object.dispatcher
   end

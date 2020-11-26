@@ -10,7 +10,7 @@
 #
 #     <%= t('hello') %>
 #
-# To use a different locale, set it with `I18n.locale`:
+# To use a different locale, set it with `I18n.locale`:I
 #
 #     I18n.locale = :es
 #

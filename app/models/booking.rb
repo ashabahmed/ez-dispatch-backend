@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
   belongs_to :account
 
   def self.ordered
-    Booking.all.order(pick_up_time: :asc)
+    Booking.all.order(date: :asc)
   end
 
 end

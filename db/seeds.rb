@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-
 Company.destroy_all
 
 car_types = ["Sedan", "SUV", "Stretch Limo", "Luxury Van", "Cargo Van", "Extended SUV"]
@@ -34,7 +33,7 @@ passengers:"", number: Faker::PhoneNumber.cell_phone, credit_cards: Faker::Busin
 puts "accounts created"
 
 80.times {
-  date = Faker::Date.between(from: Time.now.strftime("%Y-%m-%d"), to: '2020-11-26')
+  date = Faker::Time.between(from: DateTime.now , to: DateTime.now + 5, format: :default)
   pick_up_time = (Faker::Time.between_dates(from: date, to: date, period: :morning))
   Booking.create(account: Account.all.sample, vehicle_type: car_types.sample ,vehicle: nil, driver: nil, 
   drop_off_address: Faker::Address.street_address, pick_up_address: Faker::Address.street_address, 
@@ -43,7 +42,7 @@ puts "accounts created"
 }
 puts "future dates created"
 80.times {
-  date = Faker::Date.between(from: '2020-11-05', to: Time.now.strftime("%Y-%m-%d"))
+  date = Faker::Time.between(from: DateTime.now - 5, to: DateTime.now, format: :default)
   pick_up_time = (Faker::Time.between_dates(from: date, to: date, period: :morning))
   drop_off_time = (Faker::Time.between_dates(from: date, to: date, period: :evening))
 
