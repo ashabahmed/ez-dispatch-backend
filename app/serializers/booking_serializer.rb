@@ -12,6 +12,7 @@ class BookingSerializer < ActiveModel::Serializer
 
   def driver
     self.object.driver
+    
   end
 
   def account
