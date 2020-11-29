@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   
   def index
-    bookings = Booking.all.ordered
+    bookings = Booking.all
     render json: bookings
   end
 
@@ -34,7 +34,6 @@ class BookingsController < ApplicationController
   end
 
   def update
-
     booking = Booking.find(params[:id])
 
     booking.update!(booking_params)

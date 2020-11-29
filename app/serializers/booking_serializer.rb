@@ -3,7 +3,7 @@ class BookingSerializer < ActiveModel::Serializer
   :date, :pick_up_time, :drop_off_time, :trip_type, 
   :trip_status, :price, :payment_type, :vehicle_type, :special_notes, 
   :internal_notes, :passenger_name, :passenger_number, :pick_up_address, 
-  :drop_off_address, :created_at, :updated_at, :booking_date, :booking_time
+  :drop_off_address, :created_at, :updated_at, :booking_datetime
 
 
   def dispatcher
@@ -23,12 +23,18 @@ class BookingSerializer < ActiveModel::Serializer
     self.object.vehicle
   end
 
-  def booking_date
-    self.object.date && self.object.date.strftime("%Y-%m-%d")
+  def date
+    self.object.date && self.object.date.strftime("%a %b %d %Y")
   end
 
-  def booking_time
-    self.object.pick_up_time && self.object.pick_up_time.strftime("%I:%M:%S")
+  def booking_datetime
+    self.object.date && self.object.date.strftime("%Y-%m-%dT%H:%M")
   end
-  
+
+
+  # def booking_time
+  #   self.object.pick_up_time && self.object.pick_up_time.strftime("%I:%M:%S")
+  # end
+
+
 end
