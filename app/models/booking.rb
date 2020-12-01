@@ -3,9 +3,7 @@ class Booking < ApplicationRecord
   belongs_to :vehicle, optional: true
   belongs_to :dispatcher
   belongs_to :account
+  has_one :location_point
 
-  def self.ordered
-    Booking.all.order(date: :asc)
-  end
 
 end

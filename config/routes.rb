@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   # get '/bookings/:id' => 'bookings#show'
 
+  post '/bookings/update_booking_location' => "bookings#update_booking_location"
+
   resources :dispatchers
   resources :companies
   resources :drivers

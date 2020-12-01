@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_191307) do
+ActiveRecord::Schema.define(version: 2020_12_01_020845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(version: 2020_11_18_191307) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "active", default: true
     t.index ["company_id"], name: "index_drivers_on_company_id"
+  end
+
+  create_table "location_points", force: :cascade do |t|
+    t.integer "booking_id"
+    t.boolean "location_found", default: false, null: false
+    t.decimal "pick_up_longitude", precision: 7
+    t.decimal "pick_up_latitude", precision: 7
+    t.decimal "drop_off_latitude", precision: 7
+    t.decimal "drop_off_longitude", precision: 7
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "vehicles", force: :cascade do |t|

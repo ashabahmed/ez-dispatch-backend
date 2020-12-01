@@ -41,6 +41,21 @@ class BookingsController < ApplicationController
     render json: booking
   end
 
+  def update_booking_location
+    booking = Booking.find(params[:id])
+    lp = booking.location_point || LocationPoint.new
+    lp.pick_up_longitude = params[:booking][:pick_up_longitude].to_f
+    lp.pick_up_latitude = params[:booking][:pick_up_latitude].to_f
+    lp.drop_off_longitude = params[:booking][:drop_off_longitude].to_f
+    lp.drop_off_latitude = params[:booking][:drop_off_latitude].to_f
+    lp.location_found = params[:booking][:location_found]
+    lp.save
+    booking.location_point = lp
+    booking.save
+    byebug
+    render json: booking
+  end
+
   private 
 
   def booking_params
