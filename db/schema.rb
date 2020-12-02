@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_020845) do
+ActiveRecord::Schema.define(version: 2020_12_02_032922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,12 +86,14 @@ ActiveRecord::Schema.define(version: 2020_12_01_020845) do
   create_table "location_points", force: :cascade do |t|
     t.integer "booking_id"
     t.boolean "location_found", default: false, null: false
-    t.decimal "pick_up_longitude", precision: 7
-    t.decimal "pick_up_latitude", precision: 7
-    t.decimal "drop_off_latitude", precision: 7
-    t.decimal "drop_off_longitude", precision: 7
+    t.decimal "pick_up_longitude", precision: 15, scale: 10
+    t.decimal "pick_up_latitude", precision: 15, scale: 10
+    t.decimal "drop_off_latitude", precision: 15, scale: 10
+    t.decimal "drop_off_longitude", precision: 15, scale: 10
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "distance"
+    t.string "duration"
   end
 
   create_table "vehicles", force: :cascade do |t|

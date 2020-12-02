@@ -49,10 +49,11 @@ class BookingsController < ApplicationController
     lp.drop_off_longitude = params[:booking][:drop_off_longitude].to_f
     lp.drop_off_latitude = params[:booking][:drop_off_latitude].to_f
     lp.location_found = params[:booking][:location_found]
+    lp.distance = params[:booking][:distance]
+    lp.duration = params[:booking][:duration]
     lp.save
     booking.location_point = lp
     booking.save
-    byebug
     render json: booking
   end
 
