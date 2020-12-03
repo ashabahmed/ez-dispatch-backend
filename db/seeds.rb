@@ -32,22 +32,26 @@ puts "vehicles created"
 passengers:"", number: Faker::PhoneNumber.cell_phone, credit_cards: Faker::Business.credit_card_number )}
 puts "accounts created"
 
-80.times {
+pu_places = ['Coney Island', 'Flatiron School', 'JFK Airport', 'Citifield', "Yankee Stadium", 'Penn Station', 'LGA Airport', "Lincoln Center", 'Mandarin Oriental, New York', 'The Museum of Modern Art']
+do_places = ['EWR Airport', 'World Trade Center', "Lombardi's", 'Staten Island', 'Williamsburg', 'Belmont Park', "Jones Beach", 'Museum of the Moving Image']
+
+30.times {
   date = Faker::Time.between(from: DateTime.now , to: DateTime.now + 5, format: :default)
   pick_up_time = (Faker::Time.between_dates(from: date, to: date, period: :morning))
   Booking.create(account: Account.all.sample, vehicle_type: car_types.sample ,vehicle: nil, driver: nil, 
-  drop_off_address: Faker::Address.street_address, pick_up_address: Faker::Address.street_address, 
+  drop_off_address: do_places.sample, pick_up_address: pu_places.sample, 
   dispatcher: Dispatcher.all.sample, date: date, pick_up_time: pick_up_time, drop_off_time: nil, trip_type: "", trip_status: "Booked", price: 0, payment_type: "", 
   special_notes:"", internal_notes:"", passenger_name: "", passenger_number: "")
 }
 puts "future dates created"
+
 80.times {
   date = Faker::Time.between(from: DateTime.now - 5, to: DateTime.now, format: :default)
   pick_up_time = (Faker::Time.between_dates(from: date, to: date, period: :morning))
   drop_off_time = (Faker::Time.between_dates(from: date, to: date, period: :evening))
 
   account = Account.all.sample
-  Booking.create(account: account, vehicle_type: car_types.sample, pick_up_address: Faker::Address.street_address, drop_off_address: Faker::Address.street_address, 
+  Booking.create(account: account, vehicle_type: car_types.sample, pick_up_address: pu_places.sample, drop_off_address: do_places.sample, 
   vehicle: Vehicle.all.sample, driver: Driver.all.sample, dispatcher: Dispatcher.all.sample, date: date, pick_up_time: pick_up_time, drop_off_time: drop_off_time, 
   trip_type: "Ground", trip_status: "Dropped", price: 80, payment_type: "", special_notes:"", internal_notes:"", passenger_name: account.name, 
   passenger_number: account.number)
